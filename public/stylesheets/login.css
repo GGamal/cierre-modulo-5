@@ -1,0 +1,9 @@
+header h1{
+    position: static;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    
+    background-color:transparent;
+    opacity: 1;
+}
