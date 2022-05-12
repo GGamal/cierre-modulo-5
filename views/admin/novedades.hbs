@@ -5,5 +5,41 @@
     <div class="row">
         <p class="text-end">Hola {{usuario}} <a class="btn btn-danger" href="/admin/login/logout">Cerrar sesion</a></p>
     </div>
-    
+    <div class="row">
+        <div class="col-7">
+            <h3>Listado de novedades</h3>
+        </div>
+        <div class="col-5 text-end">
+            <a href="/admin/novedades/agregar" class="btn btn-success"><i class="fa fa-plus"> </i>Nuevo</a>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table">
+            <thead class="thead dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col" class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {{#each novedades}}
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{titulo}}</td>
+                    <td class="text center">
+                        <p>{{cuerpo}}</p>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-pencil"></i></a>
+                        <a href="#" class="btn btn-sm btn-secondary"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+    </div>
+
 </div>
