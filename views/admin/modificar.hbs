@@ -1,0 +1,23 @@
+<div style="margin: 100px auto;">
+    <h4 style="padding: 0 0 10px 0;">Modificar una novedad</h4>
+    <form action="/admin/novedades/modificar" method="post">
+
+        <input type="hidden" value="{{novedad.id}}" name="id">
+
+        <div class="input-group input-group-lg">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-lg" placeholder="Titulo" name="titulo" value="{{novedad.titulo}}">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default" placeholder="Subitulo" name="subtitulo" value="{{novedad.subtitulo}}">
+        </div>
+        <div class="mb-3">
+            <textarea type="text" class="form-control" placeholder="Cuerpo" name="cuerpo">{{novedad.cuerpo}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Modificar</button>
+    </form>
+    {{#if error}}
+    <p>{{message}}</p>
+    {{/if}}
+</div>
