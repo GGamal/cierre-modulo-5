@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session');
+var fileUpload = require('express-fileupload')
+var cors = require('cors');
+
 const async = require('hbs/lib/async');
 const req = require('express/lib/request');
 const res = require('express/lib/response');
@@ -16,7 +19,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/admin/login');
 var adminRouter = require('./routes/admin/novedades');
-
+var apiRouter = require('./routes/api');
 
 var app = express();
 
@@ -59,11 +62,23 @@ var secured = async(req,res,next)=>{
 // fin
 
 
+// subir imagen
+
+app.use(fileUpload({
+  useTempFiles:true,
+  tempFileDir: '/tmp/'
+}))
+
+
+
+// fin subir imagen
+
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/admin/login', loginRouter);
 app.use('/admin/novedades',secured, adminRouter);
-
+app.use('/api',cors(),apiRouter);
 
 
 

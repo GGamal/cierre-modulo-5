@@ -16,14 +16,14 @@ router.get('/logout', function(req, res, next) {
 // pide el nombre y contraseña y comprueba
 router.post('/',  async(req,res,next )=>{
   try{
-    var usuario = req.body.usuario;
-    var password = req.body.password;
+    var usuario = req.body.nombre;
+    var password = req.body.contraseña;
 
     var data = await usuariosmodels.getUserBUserNameAndPassword(usuario,password);
 
     if (data != undefined){
       req.session.id_usuario = data.id;
-      req.session.nombre = data.usuario;
+      req.session.nombre = data.nombre;
 
       res.redirect('/admin/novedades')
       

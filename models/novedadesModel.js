@@ -1,9 +1,10 @@
 var pool = require('./db');
 const async = require('hbs/lib/async');
+
 //listar 
 
 async function getNovedades(){
-    var query = "select * from novedades order by id desc";
+    var query = "select * from noticias order by id desc";
     var rows = await pool.query(query);
     return rows;
 }
@@ -13,7 +14,7 @@ async function getNovedades(){
 
 async function insertNovedad(obj){
     try{
-        var query = "insert into novedades set ?";
+        var query = "insert into noticias set ?";
         var rows = await pool.query(query,[obj]);
         return rows;
     }
@@ -28,7 +29,7 @@ async function insertNovedad(obj){
 // borrar
 
 async function deleteNovedades(id){
-    var query = "delete from novedades where id = ?";
+    var query = "delete from noticias where id = ?";
     var rows = await pool.query(query,[id]);
     return rows;
 }
@@ -39,7 +40,7 @@ async function deleteNovedades(id){
 // inicio para modificar =>traer una novedad por id
 
 async function getNovedadById(id){
-    var query = "select * from novedades where id = ?";
+    var query = "select * from noticias where id = ?";
     var rows = await pool.query(query,[id]);
     return rows[0];
 
@@ -51,7 +52,7 @@ async function getNovedadById(id){
 
 async function modificarNovedadById(obj,id){
     try{
-        var query = "update novedades set ? where id = ?";
+        var query = "update noticias set ? where id = ?";
         var rows = await pool.query(query,[obj,id]);
         return rows;
 
